@@ -1,0 +1,17 @@
+apiVersion: webapp.hl1.com/v1
+kind: Guesstbook
+metadata:
+  labels:
+    app.kubernetes.io/name: guesstbook
+    app.kubernetes.io/instance: guesstbook-sample
+    app.kubernetes.io/part-of: test1
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: test1
+  name: guesstbook-sample
+spec:
+  # TODO(user): Add fields here
+#  foo: helin
+#  firstName: he
+#  lastName: lin
+#status:
+#  status1: ruuu
