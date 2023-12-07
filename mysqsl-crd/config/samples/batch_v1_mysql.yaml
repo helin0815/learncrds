@@ -1,0 +1,12 @@
+apiVersion: batch.tutorial.kubebuilder.io/v1
+kind: Mysql
+metadata:
+  labels:
+    app.kubernetes.io/name: mysql
+    app.kubernetes.io/instance: mysql-sample
+    app.kubernetes.io/part-of: mysqsl-crd
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: mysqsl-crd
+  name: mysql-sample
+spec:
+  # TODO(user): Add fields here

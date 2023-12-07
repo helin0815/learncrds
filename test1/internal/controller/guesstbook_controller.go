@@ -47,6 +47,7 @@ type GuesstbookReconciler struct {
 //
 // For more details, check Reconcile and its Result here:
 // - https://pkg.go.dev/sigs.k8s.io/controller-runtime@v0.16.3/pkg/reconcile
+// 核心的就是Reconcile方法，该方法就是去不断的 watch 资源的状态，然后根据状态的不同去实现各种操作逻辑
 func (r *GuesstbookReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	_ = log.FromContext(ctx)
 
