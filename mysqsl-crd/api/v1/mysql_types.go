@@ -80,6 +80,7 @@ type Mysql struct {
 
 	Spec   MysqlSpec   `json:"spec,omitempty"`
 	Status MysqlStatus `json:"status,omitempty"`
+	// todo：这是一次验证
 }
 
 //+kubebuilder:object:root=true
