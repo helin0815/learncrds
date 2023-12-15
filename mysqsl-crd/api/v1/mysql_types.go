@@ -36,18 +36,20 @@ type MysqlSpec struct {
 	//+kubebuilder:default:=1
 	//+kubebuilder:validation:Minimum:=1
 	Replicas *int32 `json:"replicas,omitempty" protobuf:"varint,1,opt,name=replicas"`
-
+	// 下面这个是模板自带的，上面的四个是用户创建的
 	// Foo is an example field of Mysql. Edit mysql_types.go to remove/update
 	Foo string `json:"foo,omitempty"`
 }
 
 type MysqlCode string
 
+// 针对mysql的code定义两个值
 const (
 	SuccessCode MysqlCode = "Success"
 	FailureCode MysqlCode = "Failure"
 )
 
+// 下面以//+开头的注释在kubebuilder中被称为元数据标记，这些标记的作用就是告诉controller-tools生成额外的信息
 //+kubebuilder:object:root=true
 //+kubebuilder:subresource:status
 //+kubebuilder:subresource:scale:specpath=.spec.replicas,statuspath=.status.replicas,selectorpath=.status.labelSelector
@@ -60,6 +62,7 @@ const (
 type MysqlStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
+	// 模板不会创建任何字段，下面三个都是用户创建的
 	Code          MysqlCode `json:"code,omitempty"`
 	Replicas      int32     `json:"replicas"`
 	ReadyReplicas int32     `json:"readyReplicas"`
@@ -80,6 +83,7 @@ type Mysql struct {
 
 	Spec   MysqlSpec   `json:"spec,omitempty"`
 	Status MysqlStatus `json:"status,omitempty"`
+	Foo    string      `json:"foo,omitempty"`
 	// todo：这是一次验证
 }
 

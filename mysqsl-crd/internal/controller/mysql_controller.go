@@ -18,6 +18,7 @@ package controller
 
 import (
 	"context"
+	"fmt"
 	"reflect"
 
 	//corev1 "k8s.io/client-go/kubernetes/typed/core/v1"
@@ -63,7 +64,7 @@ func (r *MysqlReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl
 	defer utilruntime.HandleCrash()
 	logger := log.FromContext(ctx)
 	logger.Info("receive reconcile event", "name", req.String())
-
+	fmt.Println("req info:", req.Name, req.String(), req.NamespacedName)
 	// 获取mysql对象
 	logger.Info("get mysql object", "name", req.String())
 	mysql := &batchv1.Mysql{}
@@ -90,6 +91,7 @@ func (r *MysqlReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl
 // +kubebuilder:rbac:groups=apps,resources=deployments,verbs=get;list;watch;create;update;patch;delete
 // +kubebuilder:rbac:groups=apps,resources=deployments/status,verbs=get;update;patch
 func (r *MysqlReconciler) SetupWithManager(mgr ctrl.Manager) error {
+	// 将 Reconcile 添加到 manager 中，这样当 manager 启动时它就会被启动
 	return ctrl.NewControllerManagedBy(mgr).
 		WithOptions(controller.Options{
 			MaxConcurrentReconciles: 3,

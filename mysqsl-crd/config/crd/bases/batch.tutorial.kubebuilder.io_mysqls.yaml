@@ -24,6 +24,8 @@ spec:
               of an object. Servers should convert recognized schemas to the latest
               internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
             type: string
+          foo:
+            type: string
           kind:
             description: 'Kind is a string value representing the REST resource this
               object represents. Servers may infer this from the endpoint the client
@@ -39,8 +41,8 @@ spec:
                   type: string
                 type: array
               foo:
-                description: Foo is an example field of Mysql. Edit mysql_types.go
-                  to remove/update
+                description: 下面这个是模板自带的，上面的四个是用户创建的 Foo is an example field of Mysql.
+                  Edit mysql_types.go to remove/update
                 type: string
               image:
                 type: string
@@ -60,7 +62,7 @@ spec:
               code:
                 description: 'INSERT ADDITIONAL STATUS FIELD - define observed state
                   of cluster Important: Run "make" to regenerate code after modifying
-                  this file'
+                  this file 模板不会创建任何字段，下面三个都是用户创建的'
                 type: string
               readyReplicas:
                 format: int32

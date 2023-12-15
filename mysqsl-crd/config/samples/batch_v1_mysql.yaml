@@ -10,6 +10,7 @@ metadata:
   name: mysql-sample
 spec:
   # TODO(user): Add fields here
-  replicas: 2
+  replicas: 1
+#  image: mysql:5.7
   image: flyer103/mysql:5.7
   command: [ "/bin/bash", "-ce", "tail -f /dev/null" ]
